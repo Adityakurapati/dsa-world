@@ -1,0 +1,74 @@
+Linear Seacrh - O(n) || O(1)
+Linear TIme Complexity - As Input increase The Time Also increase
+
+Binray Search - O(1) || O(n log n)
+
+best case as size increases the Time Rermains 
+
+max- comparisons = 1= N/2^K  =>  N=2^K => Log(N)=Log(2^K) => LogN = KLOg2 => K=LogN/Log2 => k=LogN Base 2 
+
+###### Binary Search In 2D Array
+Linear => N * M
+N times down row++ And N times left Decrease col--
+N + N =2N
+
+Srictlysorted = rowwise sorted (1st element of row > last element of prev row)
+
+Bubble Sort = Comparison Sorting
+N pass = N largest element  At End
+
+BEst - O(N)
+Worst - O(N^2)
+at each Pass the Comparison was decremented 
+for any pass if swap not done means the Array Is Sorted 
+stable = order and value both matters
+
+Selection Sort :- select an element and put it on correct position- select largest in array and put it at correct place +
+when the Numbers are given in Range , then use Cyclic Sort
+amazon=> 1-n find missiing Numbers
+unosrted array - find smallest missing Numbers
+find duplicate Numbers
+index = value -1 why ? = it starts From 0
+
+// Finding Missing Element 
+
+0-N array Contains 
+[4,0,2,1]
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        int i = 0;
+        while (i < nums.length) {
+            int correct = nums[i]; // Now Correct Index Is 4 FOr 4 
+            if (nums[i]<nums.length && nums[i]!=nums[correct]) {
+                // Swap nums[i] and nums[nums[i]]
+                int temp = nums[i];
+                nums[i] = nums[correct];
+                nums[correct] = temp;
+            } else {
+                i++;
+            }
+        }
+
+       for(int j=0;j<nums.length;j++){
+        if(nums[j]!=j){
+            return j;
+        }
+       }
+       return nums.length;
+    }
+}
+
+
+
+
+
+worst case - right skewed measn continous  greater elements we are getting 
+as height increases , the Time Complexity increases 
+
+Best Case -
+
+balanceed Tress
+Equally spi;lit up
+partion ahhppend in the middle 
+Height of Tree = complexity
