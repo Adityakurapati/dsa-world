@@ -36,6 +36,14 @@ public class BubbleSort {
                 return maxIndex;
         }
 
+        // static void selectionSort (int arr[]){
+        //         for(int i=0;i<arr.length;i++){
+        //                 int maxIndex = findMaxIndex(arr,0,arr.length-i-1);
+        //                 if(maxIndex!=arr.length-i-1){
+        //                         // swap so that largest element at each iteration get settled at last position
+        //                 }
+        //         }
+        // }
         static void selectionSort(int elements[]) {
                 int len = elements.length;
                 // passes
@@ -49,6 +57,15 @@ public class BubbleSort {
                 }
         }
 
+        // insertionSort(int arr[]){
+        //         for(int i=0;i<n;i++){
+        //                 int  j=i+1
+        //                 while(j>0 && arr[j]<arr[j-1]){
+        //                         // swap
+        //                         // j--
+        //                 }
+        //         }
+        // }
         static void insertoinSort(int[] arr) {
                 for (int i = 0; i < arr.length - 1; i++) {
                         int j = i + 1;
