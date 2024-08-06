@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class RecursionArrays {
 
         static int values[];
@@ -10,6 +12,7 @@ public class RecursionArrays {
                 System.out.println("Result: " + searchFromLast(arr, 6, arr.length - 1));
                 findAllIndex(arr, 6, arr.length - 1);
                 // System.out.println("Result: " + values.toString());
+                System.out.println("Result: " + findAllIndexes(arr, 6, arr.length - 1, new ArrayList<Integer>()));
         }
 
         public static boolean helper(int[] arr, int index) {
@@ -56,5 +59,54 @@ public class RecursionArrays {
                         arr[arr.length] = index;
                 }
                 findAllIndex(arr, target, index + 1);
+        }
+
+        public static ArrayList<Integer> findAllIndexes(int[] arr, int target, int index, ArrayList<Integer> list) {
+                if (index >= arr.length) {
+                        return list;
+                }
+                if (arr[index] == target) {
+                        list.add(index);
+                }
+                return findAllIndexes(arr, target, index + 1, list);
+        }
+
+        public static ArrayList<Integer> findAllIndexes2(int[] arr, int target, int index) {
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                if (index >= arr.length) {
+                        return list;
+                }
+                if (arr[index] == target) {
+                        list.add(index);
+                }
+                ArrayList<Integer> ansFromBelow = findAllIndexes2(arr, target, index + 1);
+                list.addAll(ansFromBelow);
+                return list;
+        }
+
+        public static int binarySearchPartial(int arr[], int target, int start, int end) {
+                if (start > end) {
+                        return -1;
+                }
+                int mid = start + (end - start) / 2;
+                if (arr[mid] == target) {
+                        return mid;
+                }
+
+                if (arr[start] < arr[mid]) {
+                        if (target >= arr[start] && target <= arr[mid]) {
+                                return binarySearchPartial(arr, target, start, mid - 1);
+                        } else {
+                                return binarySearchPartial(arr, target, mid + 1, end);
+
+                                return binarySearchPartial(arr, target, start, mid - 1);
+                        }
+                }
+
+                if (target >= arr[mid] && target <= arr[end]) {
+                        return binarySearchPartial(arr, target, mid + 1, end);
+                }
+                return binarySearchPartial(arr, target, start, end - 1);
+
         }
 }
